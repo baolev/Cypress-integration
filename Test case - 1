@@ -1,0 +1,20 @@
+describe('Byndyusoft Contact Information Test', () => {
+  it('should verify contact information', () => {
+    cy.visit('https://www.google.ru/');
+
+    // Вводим "Byndyusoft"
+    cy.get('input[name="q"]').type('Byndyusoft{enter}');
+
+    // Переходим по ссылке
+    cy.get('h3').first().click();
+
+    // "Заказать презентацию"
+    cy.contains('Заказать презентацию').click();
+
+    // Проверяем корректность номера телефона
+    cy.contains('8 800 775-15-21').should('be.visible');
+
+    // Проверяем корректность почтового ящика
+    cy.contains('sales@byndyusoft.com').should('be.visible');
+  });
+});
